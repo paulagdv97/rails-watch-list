@@ -1,20 +1,21 @@
 <h1>Here are your lists! </h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-    </tr>
-  </thead>
+    <div class="cards">
+      <% @lists.each do |list| %>
+        <div class="card-category"
+             style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                    url(
+                      <% if list.photo.attached? %>
+                        <%= cl_image_path list.photo.key, height: 300, width: 400, crop: :fill %>
+                      <% else  %>
+                          https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1172&q=80
+                      <% end %>
+                    )">
+              <%= list.name %>
+              <%= link_to 'See more ➡️', list %>
+        </div>
+      <% end %>
+    </div>
 
-  <tbody>
-    <% @lists.each do |list| %>
-      <tr>
-        <td><%= list.name %></td>
-        <td><%= link_to 'See more ➡️', list %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <%= link_to 'Create new list! 🎬', new_list_path, class:"btn btn-primary" %>
