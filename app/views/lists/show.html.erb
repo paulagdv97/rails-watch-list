@@ -9,7 +9,9 @@
     <% @list.bookmarks.each do |bookmark| %>
       <li>
         <h3>Bookmark: <%= bookmark.comment %></h3>
-        <p>Movies: <%= bookmark.movie_id %></p>
+        <p>Movie Name: <%= bookmark.movie.title%></p>
+
+        <img src="<%= bookmark.movie.poster_url %>" alt="">
       </li>
     <% end %>
   </ul>
