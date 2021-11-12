@@ -6,7 +6,6 @@ class BookmarksController < ApplicationController
 
   # POST /restaurants
   def create
-    raise
     @bookmark = Bookmark.new(bookmark_params)
     @list = List.find(params[:list_id])
     @bookmark.list = @list
